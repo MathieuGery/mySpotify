@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Cookies from 'js-cookie'
 
@@ -24,6 +24,9 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 );
 
 function App() {
+    useEffect(() => {
+    }, [])
+
     return (
         <BrowserRouter>
             <div>
