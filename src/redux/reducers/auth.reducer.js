@@ -1,25 +1,17 @@
 import { authConstants } from '../constants/auth.constants'
+import Cookies from 'js-cookie'
 
-let auth = JSON.parse(localStorage.getItem('auth'));
-const initialState = auth ? { loggedIn: true, auth } : {};
+let access_token = Cookies.get('access_token');
+const initialState = access_token ? { loggedIn: true, access_token } : {};
+console.log(initialState);
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {
-        case authConstants.LOGIN_REQUEST:
+        case authConstants.LOGIN:
             return {
                 ...state,
-                loggingIn: true,
-            };
-        case authConstants.LOGIN_SUCCESS:
-            return {
-                ...state,
+                access_token: action.access_token,
                 loggedIn: true,
-                loggingIn: false,
-                data: action.auth.data,
-            };
-        case authConstants.LOGIN_FAILURE:
-            return {
-                loggedIn: false,
             };
         case authConstants.LOGOUT:
             return {
