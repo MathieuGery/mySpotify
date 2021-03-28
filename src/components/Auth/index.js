@@ -54,7 +54,7 @@ function Auth(props) {
                             className="inline-flex items-center w-full px-2.5 py-1.5 border border-transparent text-xs font-medium
                             rounded shadow-sm text-white flex justify-center bg-black hover:bg-gray-500 focus:outline-none focus:ring-2
                             focus:ring-offset-2 focus:ring-white text-lg">
-                        <a href={buildHref()}>
+                        <a className="w-full h-full" href={buildHref()}>
                             <div>
                                 Login
                             </div>
