@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {login} from "../../redux/actions/auth.action";
 import {userService} from "../../redux/services/auth.services";
-import {useHistory} from 'react-router-dom'
-import Cookies from 'js-cookie'
+import {useHistory} from 'react-router-dom';
+import Cookies from 'js-cookie';
+import config from '../../config/index.json';
 
 const mapDispatchToProps = dispatch => ({
     login: (access_token) => dispatch(login(access_token))
@@ -35,9 +36,9 @@ function Auth(props) {
     function buildHref() {
         const body = {
             response_type: 'token',
-            client_id: '8119815cdf574efd8125ce289ebd22a1',
-            scopes: 'user-read-private user-read-email',
-            redirect_uri: 'http://localhost:3000'
+            client_id: process.env.REACT_APP_CLIENT_ID,
+            scopes: process.env.REACT_APP_SCOPES,
+            redirect_uri: process.env.REACT_APP_REDIRECT_URI
         }
         return `https://accounts.spotify.com/authorize?` +
             `client_id=${body.client_id}&redirect_uri=${encodeURIComponent(body.redirect_uri)}` +
