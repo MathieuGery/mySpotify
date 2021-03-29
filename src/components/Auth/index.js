@@ -4,7 +4,6 @@ import {login} from "../../redux/actions/auth.action";
 import {userService} from "../../redux/services/auth.services";
 import {useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import config from '../../config/index.json';
 
 const mapDispatchToProps = dispatch => ({
     login: (access_token) => dispatch(login(access_token))
