@@ -1,5 +1,5 @@
 import {authConstants} from '../constants/auth.constants'
-import {userService} from "../services/auth.services";
+import {authServices} from "../services/auth.services";
 
 export const login = (access_token) => dispatch => {
     dispatch({
@@ -9,7 +9,7 @@ export const login = (access_token) => dispatch => {
 }
 
 export const logout = () => dispatch => {
-    userService.logout();
+    authServices.logout();
     dispatch({
         type: authConstants.LOGOUT
     })
