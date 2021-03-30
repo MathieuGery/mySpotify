@@ -13,7 +13,25 @@ export default function userReducer(state = {}, action) {
             };
         case userConstants.GET_USER_SUCCESS:
             return {
+                favorite_tracks: state.favorite_tracks,
+                error: null,
                 user: action.user,
+                loading: false,
+            };
+        case userConstants.GET_USER_FAV_TRACKS_REQUEST:
+            return {
+                loading: true,
+            };
+        case userConstants.GET_USER_FAV_TRACKS_FAILED:
+            return {
+                error: action.error,
+                loading: false,
+            };
+        case userConstants.GET_USER_FAV_TRACKS_SUCCESS:
+            return {
+                user: state.user,
+                error: null,
+                favorite_tracks: action.favorite_tracks,
                 loading: false,
             };
         default:
