@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 export const playlistsService = {
@@ -6,7 +7,7 @@ export const playlistsService = {
 
 async function getPlaylists(access_token) {
     return axios.get(
-        'https://api.spotify.com/v1/me',
+        '\thttps://api.spotify.com/v1/me/playlists',
         {
             headers: {'Authorization': `Bearer ${access_token}`}
         }
