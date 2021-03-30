@@ -51,7 +51,7 @@ function App(props) {
 
     return (
         <BrowserRouter>
-            <div className="bg-primary relative w-screen h-screen">
+            <div className="bg-primary w-screen h-screen">
                 <Navbar/>
                 <Switch>
                     <Route exact path="/" component={Auth}/>

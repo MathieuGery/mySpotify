@@ -20,7 +20,7 @@ function Navbar(props) {
     if (!Cookies.get('access_token') || !props.access_token)
         return <></>
     return (
-        <div className="w-screen h-auto flex justify-center">
+        <div className="fixed w-screen h-auto flex justify-center">
             <nav className="bg-gray-800 w-2/3 absolute rounded-xl top-5">
                 <div className="mx-auto px-2 sm:px-6 lg:px-8">
                     <div className="relative flex items-center justify-between h-16">

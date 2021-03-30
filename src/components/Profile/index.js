@@ -49,8 +49,8 @@ function Profile(props) {
             )
         else
             return (
-                <div className="mt-44 flex flex-col items-center">
-                    <div className="text-white text-3xl flex items-center">
+                <div className="pt-20 flex flex-col items-center">
+                    <div className="pt-5 text-white text-3xl flex items-center">
                         <img className="w-24 rounded-full" src={props.userReducer?.user?.images[0]?.url}
                              alt="profile-picture"/>
                         <div className="ml-5 text-center">Welcome<br/> <span
