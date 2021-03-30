@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {login} from "../../redux/actions/auth.action";
-import {userService} from "../../redux/services/auth.services";
 import {useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const mapDispatchToProps = dispatch => ({
-    login: (access_token) => dispatch(login(access_token))
+    login: (access_token) => dispatch(login(access_token)),
 })
 
 const mapStateToProps = state => ({
@@ -47,8 +46,7 @@ function Auth(props) {
     return (
         <div className="bg-primary w-screen h-screen flex items-center justify-center">
             <div className="bg-white flex flex-col justify-center items-center shadow-lg w-1/3 h-auto pt-20 pb-10">
-                <img className="w-2/3" src="spotify-logo.png" alt="Logo spotify"/>
-
+                <img className="w-2/3" src={"spotify-logo.png"} alt="Logo spotify"/>
                 <div className="pt-10 w-1/3">
                     <button type="button"
                             className="inline-flex items-center w-full px-2.5 py-1.5 border border-transparent text-xs font-medium

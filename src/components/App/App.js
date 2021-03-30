@@ -8,18 +8,21 @@ import Navbar from "../Navbar";
 import Profile from "../Profile";
 import Playlist from "../Playlist";
 import {connect} from "react-redux";
-import {logout} from "../../redux/actions/auth.action";
+import {getUser} from "../../redux/actions/user.action";
 
 const mapDispatchToProps = dispatch => ({
+    getUser: (access_token) => dispatch(getUser(access_token))
 })
 
 const mapStateToProps = state => ({
-    access_token: state.authReducer.access_token
+    ...state
 })
 
 function App(props) {
+
     useEffect(() => {
-    }, [])
+        props.getUser(props.authReducer.access_token);
+    }, [props.authReducer.access_token])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
         <Route

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-export const userService = {
+export const authServices = {
     login,
     logout,
 };
