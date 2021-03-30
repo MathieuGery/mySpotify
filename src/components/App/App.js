@@ -9,9 +9,11 @@ import Profile from "../Profile";
 import Playlist from "../Playlist";
 import {connect} from "react-redux";
 import {getUser} from "../../redux/actions/user.action";
+import {getPlaylists} from "../../redux/actions/playlists.action";
 
 const mapDispatchToProps = dispatch => ({
-    getUser: (access_token) => dispatch(getUser(access_token))
+    getUser: (access_token) => dispatch(getUser(access_token)),
+    getPlaylists: (access_token) => dispatch(getPlaylists(access_token))
 })
 
 const mapStateToProps = state => ({
@@ -22,6 +24,7 @@ function App(props) {
 
     useEffect(() => {
         props.getUser(props.authReducer.access_token);
+        props.getPlaylists(props.authReducer.access_token);
     }, [props.authReducer.access_token])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
