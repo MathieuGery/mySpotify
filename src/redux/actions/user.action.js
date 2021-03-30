@@ -1,5 +1,6 @@
 import {userConstants} from '../constants/user.constants'
 import {userService} from "../services/user.services";
+import {logout} from "./auth.action";
 
 export const getUser = (access_token) => dispatch => {
     dispatch(request());
@@ -10,6 +11,7 @@ export const getUser = (access_token) => dispatch => {
                 dispatch(success(user));
             },
             error => {
+                logout();
                 dispatch(failure(error.toString()));
             }
         );
@@ -24,5 +26,31 @@ export const getUser = (access_token) => dispatch => {
 
     function failure(error) {
         return {type: userConstants.GET_USER_FAILED, error}
+    }
+}
+
+export const getUserFavoriteTracks = (access_token) => dispatch => {
+    dispatch(request());
+
+    userService.getUserFavoriteTracks(access_token)
+        .then(
+            favorite_tracks => {
+                dispatch(success(favorite_tracks));
+            },
+            error => {
+                dispatch(failure(error.toString()));
+            }
+        );
+
+    function request() {
+        return {type: userConstants.GET_USER_FAV_TRACKS_REQUEST}
+    }
+
+    function success(favorite_tracks) {
+        return {type: userConstants.GET_USER_FAV_TRACKS_SUCCESS, favorite_tracks}
+    }
+
+    function failure(error) {
+        return {type: userConstants.GET_USER_FAV_TRACKS_FAILED, error}
     }
 }

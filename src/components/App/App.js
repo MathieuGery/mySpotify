@@ -1,17 +1,20 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Cookies from 'js-cookie'
+import {connect} from "react-redux";
 
 import Auth from "../Auth";
 import Main from "../Main";
 import Navbar from "../Navbar";
 import Profile from "../Profile";
 import Playlist from "../Playlist";
-import {connect} from "react-redux";
+
 import {getUser} from "../../redux/actions/user.action";
+import {getUserFavoriteTracks} from "../../redux/actions/user.action";
 
 const mapDispatchToProps = dispatch => ({
-    getUser: (access_token) => dispatch(getUser(access_token))
+    getUser: (access_token) => dispatch(getUser(access_token)),
+    getUserFavoriteTracks: (access_token) => dispatch(getUserFavoriteTracks(access_token)),
 })
 
 const mapStateToProps = state => ({
@@ -22,6 +25,7 @@ function App(props) {
 
     useEffect(() => {
         props.getUser(props.authReducer.access_token);
+        props.getUserFavoriteTracks(props.authReducer.access_token);
     }, [props.authReducer.access_token])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
