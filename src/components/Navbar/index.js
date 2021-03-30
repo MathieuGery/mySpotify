@@ -20,7 +20,8 @@ function Navbar(props) {
     if (!Cookies.get('access_token') || !props.access_token)
         return <></>
     return (
-            <nav className="bg-gray-800 rounded-xl mx-10">
+        <div className="w-screen h-auto flex justify-center">
+            <nav className="bg-gray-800 w-2/3 absolute rounded-xl top-5">
                 <div className="mx-auto px-2 sm:px-6 lg:px-8">
                     <div className="relative flex items-center justify-between h-16">
                         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -30,12 +31,12 @@ function Navbar(props) {
                                 <span className="sr-only">Open main menu</span>
                                 <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                           d="M4 6h16M4 12h16M4 18h16"/>
                                 </svg>
                                 <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                           d="M6 18L18 6M6 6l12 12"/>
                                 </svg>
                             </button>
@@ -74,7 +75,7 @@ function Navbar(props) {
                                         <span className="sr-only">Log Out</span>
                                         <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                                   d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                                         </svg>
                                     </button>
@@ -82,23 +83,23 @@ function Navbar(props) {
                             </div>
 
                             <div className="ml-3 relative">
-                                <div>
-                                    <button type="button"
+                                <Link to={"/me"}>
+                                <button type="button"
                                             className="text-white bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                                             id="user-menu" aria-expanded="false" aria-haspopup="true">
-                                        <span className="sr-only">Log Out</span>
                                         <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                                   d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
                                     </button>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
+        </div>
     );
 }
 
