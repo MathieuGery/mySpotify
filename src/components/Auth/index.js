@@ -24,7 +24,6 @@ function Auth(props) {
             return initial;
         }, {});
         if (hash.access_token || Cookies.get('access_token')) {
-            console.log(hash.access_token);
             Cookies.set('access_token', hash.access_token);
             props.login(hash.access_token)
             props.history.push("/main")

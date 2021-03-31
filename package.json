@@ -45,6 +45,7 @@
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.35",
+    "prop-types": "^15.7.2",
     "redux-logger": "^3.0.6",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }

@@ -14,7 +14,6 @@ async function getPlaylists(access_token) {
     ).then((res) => {
         return res.data;
     }).catch((err) => {
-        console.log(err.response.data.error.message)
         throw JSON.stringify(err.response.data.error.message);
     })
 }

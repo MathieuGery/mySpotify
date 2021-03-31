@@ -16,7 +16,6 @@ function Navbar(props) {
     useEffect(() => {
     }, []);
 
-    console.log(props)
     if (!Cookies.get('access_token') || !props.access_token)
         return <></>
     return (
