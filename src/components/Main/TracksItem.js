@@ -18,7 +18,7 @@ export default function TracksItem(props) {
                         <div
                             className="min-w-0 w-2/3 flex-1 px-4">
                             <div className="w-full">
-                                <p className="text-sm font-semibold text-black truncate">{props.item.name}</p>
+                                <p key={props.item.name + "-" + props.index} className="text-sm font-semibold text-black truncate">{props.item.name}</p>
                                 <p className="mt-2 flex items-center text-sm text-gray-500">
                                     {
                                         props.item?.artists?.map((artist, index) => {
