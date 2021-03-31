@@ -1,19 +1,18 @@
-
 import axios from 'axios';
 
-export const playlistsService = {
-    getPlaylists,
+export const playingServices = {
+    getCurrentlyPlaying
 };
 
-async function getPlaylists(access_token) {
+function getCurrentlyPlaying(access_token) {
     return axios.get(
-        '\thttps://api.spotify.com/v1/me/playlists',
+        "https://api.spotify.com/v1/me/player",
         {
             headers: {'Authorization': `Bearer ${access_token}`}
         }
     ).then((res) => {
         return res.data;
     }).catch((err) => {
-        throw JSON.stringify(err.response.data.error.message);
+        throw err.response.data.error.message;
     })
 }

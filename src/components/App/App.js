@@ -12,24 +12,30 @@ import Playlist from "../Playlist";
 import {getUser} from "../../redux/actions/user.action";
 import {getUserFavoriteTracks} from "../../redux/actions/user.action";
 import {getPlaylists} from "../../redux/actions/playlists.action";
+import {getPlayingTrack} from "../../redux/actions/playing.actions";
 
 const mapDispatchToProps = dispatch => ({
     getUser: (access_token) => dispatch(getUser(access_token)),
     getUserFavoriteTracks: (access_token) => dispatch(getUserFavoriteTracks(access_token)),
-    getPlaylists: (access_token) => dispatch(getPlaylists(access_token))
+    getPlaylists: (access_token) => dispatch(getPlaylists(access_token)),
+    getPlayingTrack: (access_token) => dispatch(getPlayingTrack(access_token))
 })
 
 const mapStateToProps = state => ({
-    ...state
+    access_token: state.authReducer.access_token
 })
 
 function App(props) {
 
     useEffect(() => {
-        props.getUser(props.authReducer.access_token);
-        props.getPlaylists(props.authReducer.access_token);
-        props.getUserFavoriteTracks(props.authReducer.access_token);
-    }, [props.authReducer.access_token])
+        if (!props.access_token)
+            return;
+        props.getUser(props.access_token);
+        props.getPlaylists(props.access_token);
+        props.getUserFavoriteTracks(props.access_token);
+        window.setInterval(() => props.getPlayingTrack(props.access_token), 1000);
+        //props.getPlayingTrack(props.access_token);
+    }, [props.access_token])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
         <Route
