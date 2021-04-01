@@ -10,8 +10,7 @@ import Profile from "../Profile";
 import Playlist from "../Playlist";
 
 import {getUser} from "../../redux/actions/user.action";
-import {getUserFavoriteTracks} from "../../redux/actions/user.action";
-import {getPlaylists} from "../../redux/actions/playlists.action";
+import {getUserFavoriteTracks, getPlaylists} from "../../redux/actions/user.action";
 import {getPlayingTrack} from "../../redux/actions/playing.actions";
 
 const mapDispatchToProps = dispatch => ({
@@ -31,8 +30,8 @@ function App(props) {
         if (!props.access_token)
             return;
         props.getUser(props.access_token);
-        props.getPlaylists(props.access_token);
         props.getUserFavoriteTracks(props.access_token);
+        props.getPlaylists(props.access_token);
         window.setInterval(() => props.getPlayingTrack(props.access_token), 1000);
         //props.getPlayingTrack(props.access_token);
     }, [props.access_token])

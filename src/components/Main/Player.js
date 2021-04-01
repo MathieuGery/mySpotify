@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
-import {getUser, getUserFavoriteTracks} from "../../redux/actions/user.action";
-import {getPlaylists} from "../../redux/actions/playlists.action";
+import {getUser, getUserFavoriteTracks, getPlaylists} from "../../redux/actions/user.action";
 import {getPlayingTrack} from "../../redux/actions/playing.actions";
 import {millisToMinutesAndSeconds} from "../../helpers/millisToMinutesAndSeconds";
 

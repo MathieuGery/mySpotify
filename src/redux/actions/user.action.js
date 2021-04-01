@@ -54,3 +54,29 @@ export const getUserFavoriteTracks = (access_token) => dispatch => {
         return {type: userConstants.GET_USER_FAV_TRACKS_FAILED, error}
     }
 }
+
+export const getPlaylists = (access_token) => dispatch => {
+    dispatch(request());
+
+    userService.getPlaylists(access_token)
+        .then(
+            playlists => {
+                dispatch(success(playlists));
+            },
+            error => {
+                dispatch(failure(error.toString()));
+            }
+        );
+
+    function request() {
+        return {type: userConstants.GET_PLAYLISTS_REQUEST}
+    }
+
+    function success(playlists) {
+        return {type: userConstants.GET_PLAYLISTS_SUCCESS, playlists}
+    }
+
+    function failure(error) {
+        return {type: userConstants.GET_PLAYLISTS_FAILED, error}
+    }
+}

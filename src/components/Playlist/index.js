@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {getPlaylists} from "../../redux/actions/playlists.action";
+import {getPlaylists} from "../../redux/actions/user.action";
 
 const mapDispatchToProps = dispatch => ({
+    getPlaylists: (access_token) => dispatch(getPlaylists(access_token)),
 })
 
 const mapStateToProps = state => ({
-    playlists: state.playlistsReducer,
+    access_token: state.authReducer.access_token,
+    userReducer: state.userReducer
 })
 
 function Playlist(props) {
@@ -15,7 +17,7 @@ function Playlist(props) {
 
     return (
         <div>
-            {JSON.stringify(props.playlists)}
+            {JSON.stringify(props.userReducer.playlists)}
         </div>
     );
 }
