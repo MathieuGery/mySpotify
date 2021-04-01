@@ -80,3 +80,29 @@ export const getPlaylists = (access_token) => dispatch => {
         return {type: userConstants.GET_PLAYLISTS_FAILED, error}
     }
 }
+
+export const getLikedTracks = (access_token) => dispatch => {
+    dispatch(request());
+
+    userService.getLikedTracks(access_token)
+        .then(
+            liked_tracks => {
+                dispatch(success(liked_tracks));
+            },
+            error => {
+                dispatch(failure(error.toString()));
+            }
+        );
+
+    function request() {
+        return {type: userConstants.GET_LIKED_TRACKS_REQUEST}
+    }
+
+    function success(liked_tracks) {
+        return {type: userConstants.GET_LIKED_TRACKS_SUCCESS, liked_tracks}
+    }
+
+    function failure(error) {
+        return {type: userConstants.GET_LIKED_TRACKS_FAILED, error}
+    }
+}

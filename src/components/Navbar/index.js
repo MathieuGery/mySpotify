@@ -66,6 +66,13 @@ function Navbar(props) {
                                             Playlist
                                         </div>
                                     </Link>
+
+                                    <Link to={"/my-liked-tracks"}>
+                                        <div
+                                            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            Liked Tracks
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -118,6 +125,13 @@ function Navbar(props) {
                                 <div
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                     Playlist
+                                </div>
+                            </Link>
+
+                            <Link to={"/my-liked-tracks"}>
+                                <div
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Liked Tracks
                                 </div>
                             </Link>
                         </div>
