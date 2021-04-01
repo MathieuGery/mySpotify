@@ -56,7 +56,7 @@ function Auth(props) {
                     <button type="button"
                             className="inline-flex items-center w-full px-2.5 py-1.5 border border-transparent text-xs font-medium
                             rounded shadow-sm text-white flex justify-center bg-black hover:bg-gray-500 focus:outline-none focus:ring-2
-                            focus:ring-offset-2 focus:ring-white text-lg">
+                            focus:ring-offset-2 focus:ring-white text-lg bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
                         <a className="w-full h-full" href={buildHref()}>
                             <div>
                                 Login
