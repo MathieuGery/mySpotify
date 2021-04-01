@@ -10,7 +10,8 @@ import Profile from "../Profile";
 import Playlist from "../Playlist";
 
 import {getUser} from "../../redux/actions/user.action";
-import {getUserFavoriteTracks, getPlaylists} from "../../redux/actions/user.action";
+import {getUserFavoriteTracks} from "../../redux/actions/user.action";
+import {getPlaylists} from "../../redux/actions/user.action";
 import {getPlayingTrack} from "../../redux/actions/playing.actions";
 
 const mapDispatchToProps = dispatch => ({
@@ -56,7 +57,7 @@ function App(props) {
 
     return (
         <BrowserRouter>
-            <div className="bg-primary w-screen h-screen">
+            <div className="">
                 <Navbar/>
                 <Switch>
                     <Route exact path="/" component={Auth}/>

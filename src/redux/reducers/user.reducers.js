@@ -13,7 +13,7 @@ export default function userReducer(state = {}, action) {
             };
         case userConstants.GET_USER_SUCCESS:
             return {
-                favorite_tracks: state.favorite_tracks,
+                ...state,
                 error: null,
                 user: action.user,
                 loading: false,
@@ -29,7 +29,7 @@ export default function userReducer(state = {}, action) {
             };
         case userConstants.GET_USER_FAV_TRACKS_SUCCESS:
             return {
-                user: state.user,
+                ...state,
                 error: null,
                 favorite_tracks: action.favorite_tracks,
                 loading: false,
@@ -45,7 +45,7 @@ export default function userReducer(state = {}, action) {
             };
         case userConstants.GET_PLAYLISTS_SUCCESS:
             return {
-                user: state.user,
+                ...state,
                 error: null,
                 playlists: action.playlists,
                 loading: false,
