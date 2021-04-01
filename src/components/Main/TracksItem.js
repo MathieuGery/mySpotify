@@ -1,13 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {pause, play, setPlayingTrack} from "../../redux/actions/playing.actions";
 
-export default function TracksItem(props) {
+const mapDispatchToProps = dispatch => ({
+    setPlayingTrack: (access_token, playing_track) => dispatch(setPlayingTrack(access_token, playing_track)),
+})
+
+const mapStateToProps = state => ({
+    access_token: state.authReducer.access_token
+})
+
+function TracksItem(props) {
     useEffect(() => {
     }, []);
 
     return (
         <li key={`track-founded-${props.index}`}>
-            <a href="#" className="block hover:bg-gray-50 focus:bg-gray-200">
+            <a href="#" onClick={() => {props.setPlayingTrack(props.access_token, props.item?.uri)}} className="block hover:bg-gray-50 focus:bg-gray-200">
                 <div className="flex items-center px-4 py-4 sm:px-6">
                     <div className="min-w-0 flex-1 flex items-center">
                         <div className="flex-shrink-0">
@@ -53,3 +63,5 @@ TracksItem.propTypes = {
     item: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(TracksItem);

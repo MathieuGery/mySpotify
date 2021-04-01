@@ -16,11 +16,14 @@ export default function playingReducer(state = {}, action) {
             return {
                 error: action.error,
             };
-        case playingConstants.SET_PLAYING_TRACK:
+        case playingConstants.SET_PLAYING_TRACK_REQUEST:
             return {
+                ...state,
                 playing_track: action.playing_track,
-                is_playing: true,
-                progress_ms: 0
+            };
+        case playingConstants.SET_PLAYING_TRACK_FAILURE:
+            return {
+                error: action.error,
             };
         case playingConstants.PLAY:
             return {

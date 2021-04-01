@@ -22,20 +22,23 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+    logged: state.authReducer.loggedIn,
     access_token: state.authReducer.access_token
 })
 
 function App(props) {
-
     useEffect(() => {
-        if (!props.access_token)
+        if (props.logged === false) {
+            // if (intervalId !== null)
+            //     clearInterval(intervalId);
             return;
+        }
         props.getUser(props.access_token);
         props.getUserFavoriteTracks(props.access_token);
         props.getPlaylists(props.access_token);
         window.setInterval(() => props.getPlayingTrack(props.access_token), 1000);
         //props.getPlayingTrack(props.access_token);
-    }, [props.access_token])
+    }, [props.logged, props.access_token])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
         <Route
