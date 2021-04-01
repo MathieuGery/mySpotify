@@ -16,13 +16,13 @@ function Profile(props) {
     function buildFavTrackSection() {
         return props.userReducer?.favorite_tracks?.items?.map((data, index) => {
             return (
-                <li key={index} className="py-10 px-6 bg-gray-800 text-center rounded-lg xl:px-10 xl:text-center">
+                <li key={index} className="py-10 px-6 bg-white text-center rounded-lg xl:px-10 xl:text-center">
                     <div className="space-y-6 xl:space-y-10">
-                        <img className="mx-auto h-20 w-20 rounded-full"
+                        <img className="mx-auto h-20 w-20 rounded-full shadow-2xl"
                              src={data.images[0].url}
                              alt=""/>
                         <div className="font-medium text-lg leading-6 space-y-1">
-                            <h3 className="text-white">{data.name}</h3>
+                            <h3 className="text-black">{data.name}</h3>
                         </div>
                     </div>
                 </li>
@@ -51,7 +51,7 @@ function Profile(props) {
             return (
                 <div className="pt-20 flex flex-col items-center">
                     <div className="pt-5 text-white text-3xl flex items-center">
-                        <img className="w-24 rounded-full" src={props.userReducer?.user?.images[0]?.url}
+                        <img className="w-24 rounded-full shadow-2xl" src={props.userReducer?.user?.images[0]?.url}
                              alt="profile-picture"/>
                         <div className="ml-5 text-center">Welcome<br/> <span
                             className="font-bold text-4xl">{props.userReducer?.user?.display_name}</span></div>
