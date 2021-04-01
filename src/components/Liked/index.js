@@ -15,19 +15,38 @@ function LikedTracks(props) {
     function buildLikedTracksSection() {
         return props.userReducer?.liked_tracks?.items?.map((data, index) => {
             return (
-                <li key={index} className="py-10 px-6 bg-gray-800 text-center rounded-lg xl:px-10 xl:text-center">
-                    <div className="space-y-6 xl:space-y-10">
-                        <div className="mx-auto h-20 w-20 rounded-full">
-                            {data.track.name}
+                <tr>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                            <div className="flex-shrink-0 h-10 w-10">
+                                <img className="h-10 w-10 rounded-full"
+                                     src={data.track.album.images[2].url}
+                                     alt=""/>
+                            </div>
+                            <div className="ml-4">
+                                <div className="text-sm font-medium text-gray-900">
+                                    {data.track.name}
+                                </div>
+                            </div>
                         </div>
-                        <div className="font-medium text-lg leading-6 space-y-1">
-                            <h3 className="text-white">{data.name}</h3>
-                        </div>
-                    </div>
-                </li>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{data.track.album.artists[0].name}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                            className="text-sm text-gray-900">
+                          {data.track.album.name}
+                        </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {data.added_at}
+                    </td>
+                </tr>
             )
         })
     }
+
     function buildLikedTracks() {
         if (props.userReducer.loading)
             return (
@@ -47,63 +66,33 @@ function LikedTracks(props) {
             )
         else
             return (
-                <div class="mx-5 pt-20 flex flex-col">
+                <div class="mx-10 pt-20 flex flex-col">
                     <div class="pt-5 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Title
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Artist
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Album
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Date aded
-                                        </th>
-                                        <th scope="col" class="relative px-6 py-3">
-                                            <span class="sr-only">Edit</span>
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=l28H8Z9jWr&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt=""/>
-                                                </div>
-                                                <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">
-                                                        Jane Cooper
-                                                    </div>
-                                                    <div class="text-sm text-gray-500">
-                                                        jane.cooper@example.com
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                            <div class="text-sm text-gray-500">Optimization</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  Active
-                </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            Admin
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                        </td>
-                                    </tr>
+                                    {buildLikedTracksSection()}
                                     </tbody>
                                 </table>
                             </div>
@@ -112,10 +101,11 @@ function LikedTracks(props) {
                 </div>
 
 
-    )
+            )
     }
+
     return (
-       buildLikedTracks()
+        buildLikedTracks()
     );
 }
 
