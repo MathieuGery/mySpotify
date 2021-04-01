@@ -45,21 +45,24 @@ function Navbar(props) {
                         <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex-shrink-0 flex items-center">
                                 <img className="block lg:hidden h-8 w-auto"
-                                     src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify-Logo"/>
-                                    <img className="hidden lg:block h-8 w-auto"
-                                         src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
-                                         alt="Spotify-Logo"/>
+                                     src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+                                     alt="Spotify-Logo"/>
+                                <img className="hidden lg:block h-8 w-auto"
+                                     src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+                                     alt="Spotify-Logo"/>
                             </div>
                             <div className="hidden sm:block sm:ml-6">
                                 <div className="flex space-x-4">
                                     <Link to={"/main"}>
-                                        <div className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <div
+                                            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                             Browse
                                         </div>
                                     </Link>
 
                                     <Link to={"/my-playlist"}>
-                                        <div className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <div
+                                            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                             Playlist
                                         </div>
                                     </Link>
@@ -72,7 +75,9 @@ function Navbar(props) {
                                 <div>
                                     <button type="button"
                                             className="text-white bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                            id="user-menu" aria-expanded="false" aria-haspopup="true" onClick={() => { props.logout() }}>
+                                            id="user-menu" aria-expanded="false" aria-haspopup="true" onClick={() => {
+                                        props.logout()
+                                    }}>
                                         <span className="sr-only">Log Out</span>
                                         <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -85,7 +90,7 @@ function Navbar(props) {
 
                             <div className="ml-3 relative">
                                 <Link to={"/me"}>
-                                <button type="button"
+                                    <button type="button"
                                             className="text-white bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                                             id="user-menu" aria-expanded="false" aria-haspopup="true">
                                         <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -96,6 +101,25 @@ function Navbar(props) {
                                     </button>
                                 </Link>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="sm:hidden" id="mobile-menu">
+                    <div className="px-2 pt-2 pb-3 space-y-1">
+                        <div className="flex space-x-4">
+                            <Link to={"/main"}>
+                                <div
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Browse
+                                </div>
+                            </Link>
+
+                            <Link to={"/my-playlist"}>
+                                <div
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Playlist
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
