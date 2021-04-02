@@ -66,6 +66,22 @@ export default function userReducer(state = {}, action) {
                 liked_tracks: action.liked_tracks,
                 loading: false,
             };
+        case userConstants.GET_LIKED_ARTISTS_REQUEST:
+            return {
+                loading: true,
+            };
+        case userConstants.GET_LIKED_ARTISTS_FAILED:
+            return {
+                error: action.error,
+                loading: false,
+            };
+        case userConstants.GET_LIKED_ARTISTS_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                liked_artists: action.liked_artists,
+                loading: false,
+            };
         default:
             return state;
     }

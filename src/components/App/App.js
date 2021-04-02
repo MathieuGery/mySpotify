@@ -9,10 +9,12 @@ import Navbar from "../Navbar";
 import Profile from "../Profile";
 import Playlist from "../Playlist";
 import LikedTracks from "../Liked";
+import LikedArtists from "../LikedArtists";
 
 import {getLikedTracks, getUser} from "../../redux/actions/user.action";
 import {getUserFavoriteTracks} from "../../redux/actions/user.action";
 import {getPlaylists} from "../../redux/actions/user.action";
+import {getLikedArtists} from "../../redux/actions/user.action";
 import {getPlayingTrack} from "../../redux/actions/playing.actions";
 
 const mapDispatchToProps = dispatch => ({
@@ -20,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
     getUserFavoriteTracks: (access_token) => dispatch(getUserFavoriteTracks(access_token)),
     getPlaylists: (access_token) => dispatch(getPlaylists(access_token)),
     getPlayingTrack: (access_token) => dispatch(getPlayingTrack(access_token)),
-    getLikedTracks: (access_token) => dispatch(getLikedTracks(access_token))
+    getLikedTracks: (access_token) => dispatch(getLikedTracks(access_token)),
+    getLikedArtists: (access_token) => dispatch(getLikedArtists(access_token))
 })
 
 const mapStateToProps = state => ({
@@ -39,6 +42,7 @@ function App(props) {
         props.getUserFavoriteTracks(props.access_token);
         props.getPlaylists(props.access_token);
         props.getLikedTracks(props.access_token);
+        props.getLikedArtists(props.access_token);
         window.setInterval(() => props.getPlayingTrack(props.access_token), 1000);
         //props.getPlayingTrack(props.access_token);
     }, [props.logged, props.access_token])
@@ -72,6 +76,7 @@ function App(props) {
                     <PrivateRoute exact path="/me" component={Profile}/>
                     <PrivateRoute exact path="/my-playlist" component={Playlist}/>
                     <PrivateRoute exact path="/my-liked-tracks" component={LikedTracks}/>
+                    <PrivateRoute exact path="/my-liked-artists" component={LikedArtists}/>
                 </Switch>
             </div>
         </BrowserRouter>

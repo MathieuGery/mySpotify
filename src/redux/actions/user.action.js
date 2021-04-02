@@ -106,3 +106,29 @@ export const getLikedTracks = (access_token) => dispatch => {
         return {type: userConstants.GET_LIKED_TRACKS_FAILED, error}
     }
 }
+
+export const getLikedArtists = (access_token) => dispatch => {
+    dispatch(request());
+
+    userService.getLikedArtists(access_token)
+        .then(
+            liked_artists => {
+                dispatch(success(liked_artists));
+            },
+            error => {
+                dispatch(failure(error.toString()));
+            }
+        );
+
+    function request() {
+        return {type: userConstants.GET_LIKED_ARTISTS_REQUEST}
+    }
+
+    function success(liked_artists) {
+        return {type: userConstants.GET_LIKED_ARTISTS_SUCCESS, liked_artists}
+    }
+
+    function failure(error) {
+        return {type: userConstants.GET_LIKED_ARTISTS_FAILED, error}
+    }
+}
