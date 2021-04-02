@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {getUserFavoriteTracks} from "../../redux/actions/user.action";
 
@@ -52,7 +52,7 @@ function Profile(props) {
                 <div className="pt-20 flex flex-col items-center">
                     <div className="pt-5 text-white text-3xl flex items-center">
                         <img className="w-24 rounded-full shadow-2xl" src={props.userReducer?.user?.images[0]?.url}
-                             alt="profile-picture"/>
+                             alt="profile"/>
                         <div className="ml-5 text-center">Welcome<br/> <span
                             className="font-bold text-4xl">{props.userReducer?.user?.display_name}</span></div>
                     </div>

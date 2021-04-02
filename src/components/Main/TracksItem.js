@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {pause, play, setPlayingTrack} from "../../redux/actions/playing.actions";
+import {setPlayingTrack} from "../../redux/actions/playing.actions";
 
 const mapDispatchToProps = dispatch => ({
     setPlayingTrack: (access_token, playing_track) => dispatch(setPlayingTrack(access_token, playing_track)),
@@ -17,7 +17,9 @@ function TracksItem(props) {
 
     return (
         <li key={`track-founded-${props.index}`}>
-            <a href="#" onClick={() => {props.setPlayingTrack(props.access_token, props.item?.uri)}} className="block hover:bg-gray-50 focus:bg-gray-200">
+            <button onClick={() => {
+                props.setPlayingTrack(props.access_token, props.item?.uri)
+            }} className="block hover:bg-gray-50 focus:bg-gray-200">
                 <div className="flex items-center px-4 py-4 sm:px-6">
                     <div className="min-w-0 flex-1 flex items-center">
                         <div className="flex-shrink-0">
@@ -28,13 +30,15 @@ function TracksItem(props) {
                         <div
                             className="min-w-0 w-2/3 flex-1 px-4">
                             <div className="w-full">
-                                <p key={props.item.name + "-" + props.index} className="text-sm font-semibold text-black truncate">{props.item.name}</p>
+                                <p key={props.item.name + "-" + props.index}
+                                   className="text-sm font-semibold text-black truncate">{props.item.name}</p>
                                 <p className="mt-2 flex items-center text-sm text-gray-500">
                                     {
                                         props.item?.artists?.map((artist, index) => {
                                             return (
                                                 <>
-                                                    <span key={`artist-${props.item?.id}-${index}`} className="truncate">{artist?.name}</span>
+                                                    <span key={`artist-${props.item?.id}-${index}`}
+                                                          className="truncate">{artist?.name}</span>
                                                     {index !== props.item?.artists.length - 1 && <span>,&nbsp;</span>}
                                                 </>
                                             )
@@ -54,7 +58,7 @@ function TracksItem(props) {
                         </svg>
                     </div>
                 </div>
-            </a>
+            </button>
         </li>
     );
 }

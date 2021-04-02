@@ -1,8 +1,8 @@
-import { authConstants } from '../constants/auth.constants'
+import {authConstants} from '../constants/auth.constants'
 import Cookies from 'js-cookie'
 
 let access_token = Cookies.get('access_token');
-const initialState = access_token ? { loggedIn: true, access_token } : { loggedIn: false};
+const initialState = access_token ? {loggedIn: true, access_token} : {loggedIn: false};
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {

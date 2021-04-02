@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {millisToMinutesAndSeconds} from "../../helpers/millisToMinutesAndSeconds";
 import {pause, play} from "../../redux/actions/playing.actions";
@@ -68,7 +68,7 @@ function Player(props) {
                 <div className="w-full h-full flex flex-col items-center justify-evenly">
                     <div className="flex w-full items-center justify-evenly">
                         <div className="w-1/4">
-                            <img src={props.playing?.playing_track?.album?.images[0]?.url} alt={"album photo"}/>
+                            <img src={props.playing?.playing_track?.album?.images[0]?.url} alt={"album"}/>
                         </div>
                         <div className="w-2/4 h-full flex flex-col justify-center">
                             <p key={props?.playing?.playing_track.name + '-player'}
@@ -92,27 +92,31 @@ function Player(props) {
                     <div className="w-full h-1/4 flex flex-col items-center justify-evenly">
                         <div className="w-1/3 h-full flex justify-evenly items-center">
                             <div className="text-grey-darker">
-                                <svg onClick={() => playPreviousTrack()} className="w-8 h-8 hover:text-gray-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                <svg onClick={() => playPreviousTrack()} className="w-8 h-8 hover:text-gray-700"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 20 20">
                                     <path d="M4 5h3v10H4V5zm12 0v10l-9-5 9-5z"/>
                                 </svg>
                             </div>
                             {props.playing?.is_playing &&
-                            <svg xmlns="http://www.w3.org/2000/svg" onClick={() => props.pause(props.access_token)} className="w-24 h-24 hover:text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" onClick={() => props.pause(props.access_token)}
+                                 className="w-24 h-24 hover:text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd"
                                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
                                       clipRule="evenodd"/>
                             </svg>
                             }
                             {!props.playing?.is_playing &&
-                            <svg xmlns="http://www.w3.org/2000/svg"  onClick={() => props.play(props.access_token)} className="w-24 h-24 hover:text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" onClick={() => props.play(props.access_token)}
+                                 className="w-24 h-24 hover:text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd"
                                       d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
                                       clipRule="evenodd"/>
                             </svg>
                             }
                             <div className="text-grey-darker">
-                                <svg onClick={() => playNextTrack()} className="w-8 h-8 hover:text-gray-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                <svg onClick={() => playNextTrack()} className="w-8 h-8 hover:text-gray-700"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 20 20">
                                     <path d="M13 5h3v10h-3V5zM4 5l9 5-9 5V5z"/>
                                 </svg>

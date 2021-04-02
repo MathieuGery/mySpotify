@@ -13,10 +13,14 @@ import LikedArtists from "../LikedArtists";
 import ArtistProfile from "../ArtistProfile";
 import RecentlyPlayedTracks from "../RecentlyPlayedTracks";
 
-import {getLikedTracks, getRecentlyPlayedTracks, getUser} from "../../redux/actions/user.action";
-import {getUserFavoriteTracks} from "../../redux/actions/user.action";
-import {getPlaylists} from "../../redux/actions/user.action";
-import {getLikedArtists} from "../../redux/actions/user.action";
+import {
+    getLikedArtists,
+    getLikedTracks,
+    getPlaylists,
+    getRecentlyPlayedTracks,
+    getUser,
+    getUserFavoriteTracks
+} from "../../redux/actions/user.action";
 import {getPlayingTrack} from "../../redux/actions/playing.actions";
 
 const mapDispatchToProps = dispatch => ({

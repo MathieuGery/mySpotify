@@ -44,10 +44,12 @@ function Auth(props) {
 
     return (
         <div className="bg-primary w-screen h-screen flex items-center justify-center">
-            <div className="bg-white flex flex-col justify-center items-center rounded-3xl shadow-lg w-1/3 h-auto pt-20 pb-10">
+            <div
+                className="bg-white flex flex-col justify-center items-center rounded-3xl shadow-lg w-1/3 h-auto pt-20 pb-10">
                 <div className="flex-shrink-0 flex items-center">
                     <img className="block lg:hidden h-8 w-auto"
-                         src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify-Logo"/>
+                         src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+                         alt="Spotify-Logo"/>
                     <img className="hidden lg:block h-20 w-auto"
                          src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
                          alt="Spotify-Logo"/>

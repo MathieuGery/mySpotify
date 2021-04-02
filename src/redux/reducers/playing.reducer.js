@@ -1,4 +1,4 @@
-import { playingConstants } from '../constants/playing.constants'
+import {playingConstants} from '../constants/playing.constants'
 
 export default function playingReducer(state = {}, action) {
     switch (action.type) {
