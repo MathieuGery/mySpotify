@@ -132,3 +132,29 @@ export const getLikedArtists = (access_token) => dispatch => {
         return {type: userConstants.GET_LIKED_ARTISTS_FAILED, error}
     }
 }
+
+export const getRecentlyPlayedTracks = (access_token) => dispatch => {
+    dispatch(request());
+
+    userService.getRecentlyPlayedTracks(access_token)
+        .then(
+            recently_played_tracks => {
+                dispatch(success(recently_played_tracks));
+            },
+            error => {
+                dispatch(failure(error.toString()));
+            }
+        );
+
+    function request() {
+        return {type: userConstants.GET_RECENTLY_PLAYED_TRACKS_REQUEST}
+    }
+
+    function success(recently_played_tracks) {
+        return {type: userConstants.GET_RECENTLY_PLAYED_TRACKS_SUCCESS, recently_played_tracks}
+    }
+
+    function failure(error) {
+        return {type: userConstants.GET_RECENTLY_PLAYED_TRACKS_FAILED, error}
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {getLikedArtists} from "../../redux/actions/user.action";
+import {Link} from "react-router-dom";
 
 const mapDispatchToProps = dispatch => ({
     getLikedArtists: (access_token) => dispatch(getLikedArtists(access_token)),
@@ -24,6 +25,12 @@ function LikedArtists(props) {
                         <div className="font-medium text-lg leading-6 space-y-1">
                             <h3 className="text-black">{data.name}</h3>
                         </div>
+                        <Link to={"/artist/" + data.id}>
+                            <div
+                                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                Browse
+                            </div>
+                        </Link>
                     </div>
                 </li>
             )

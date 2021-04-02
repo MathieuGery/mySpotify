@@ -10,8 +10,10 @@ import Profile from "../Profile";
 import Playlist from "../Playlist";
 import LikedTracks from "../Liked";
 import LikedArtists from "../LikedArtists";
+import ArtistProfile from "../ArtistProfile";
+import RecentlyPlayedTracks from "../RecentlyPlayedTracks";
 
-import {getLikedTracks, getUser} from "../../redux/actions/user.action";
+import {getLikedTracks, getRecentlyPlayedTracks, getUser} from "../../redux/actions/user.action";
 import {getUserFavoriteTracks} from "../../redux/actions/user.action";
 import {getPlaylists} from "../../redux/actions/user.action";
 import {getLikedArtists} from "../../redux/actions/user.action";
@@ -23,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
     getPlaylists: (access_token) => dispatch(getPlaylists(access_token)),
     getPlayingTrack: (access_token) => dispatch(getPlayingTrack(access_token)),
     getLikedTracks: (access_token) => dispatch(getLikedTracks(access_token)),
+    getRecentlyPlayedTracks: (access_token) => dispatch(getRecentlyPlayedTracks(access_token)),
     getLikedArtists: (access_token) => dispatch(getLikedArtists(access_token))
 })
 
@@ -43,6 +46,7 @@ function App(props) {
         props.getPlaylists(props.access_token);
         props.getLikedTracks(props.access_token);
         props.getLikedArtists(props.access_token);
+        props.getRecentlyPlayedTracks(props.access_token)
         window.setInterval(() => props.getPlayingTrack(props.access_token), 1000);
         //props.getPlayingTrack(props.access_token);
     }, [props.logged, props.access_token])
@@ -77,6 +81,8 @@ function App(props) {
                     <PrivateRoute exact path="/my-playlist" component={Playlist}/>
                     <PrivateRoute exact path="/my-liked-tracks" component={LikedTracks}/>
                     <PrivateRoute exact path="/my-liked-artists" component={LikedArtists}/>
+                    <PrivateRoute exact path="/artist/:id" component={ArtistProfile}/>
+                    <PrivateRoute exact path="/my-recently-played-tracks" component={RecentlyPlayedTracks}/>
                 </Switch>
             </div>
         </BrowserRouter>

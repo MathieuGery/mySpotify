@@ -82,6 +82,22 @@ export default function userReducer(state = {}, action) {
                 liked_artists: action.liked_artists,
                 loading: false,
             };
+        case userConstants.GET_RECENTLY_PLAYED_TRACKS_REQUEST:
+            return {
+                loading: true,
+            };
+        case userConstants.GET_RECENTLY_PLAYED_TRACKS_FAILED:
+            return {
+                error: action.error,
+                loading: false,
+            };
+        case userConstants.GET_RECENTLY_PLAYED_TRACKS_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                recently_played_tracks: action.recently_played_tracks,
+                loading: false,
+            };
         default:
             return state;
     }
