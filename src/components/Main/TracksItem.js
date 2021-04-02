@@ -17,7 +17,8 @@ function TracksItem(props) {
 
     return (
         <li key={`track-founded-${props.index}`}>
-            <button onClick={() => {
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <a href="#" onClick={() => {
                 props.setPlayingTrack(props.access_token, props.item?.uri)
             }} className="block hover:bg-gray-50 focus:bg-gray-200">
                 <div className="flex items-center px-4 py-4 sm:px-6">
@@ -58,7 +59,7 @@ function TracksItem(props) {
                         </svg>
                     </div>
                 </div>
-            </button>
+            </a>
         </li>
     );
 }
