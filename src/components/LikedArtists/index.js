@@ -25,12 +25,14 @@ function LikedArtists(props) {
                         <div className="font-medium text-lg leading-6 space-y-1">
                             <h3 className="text-black">{data.name}</h3>
                         </div>
-                        <Link to={"/artist/" + data.id}>
-                            <div
-                                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                Browse
-                            </div>
-                        </Link>
+                        <div>
+                            <Link to={"/artist/" + data.id}>
+                                <div
+                                    className="text-white bg-gray-700 hover:text-gray-800 hover:bg-green-500 px-3 py-2 rounded-md text-sm font-medium">
+                                    Explore
+                                </div>
+                            </Link>
+                        </div>
                     </div>
                 </li>
             )
