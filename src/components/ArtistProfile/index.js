@@ -21,14 +21,18 @@ function ArtistProfile(props) {
 
     if (!value) {
         return (
-            <div> bite </div>
+            <div className="flex h-screen justify-center items-center">
+                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                    <span className="block">Loading ...</span>
+                </h1>
+            </div>
         )
     }
 
     return (
         <div className="py-20">
             <div className="max-w-7xl mx-auto bg-gray-800 lg:bg-transparent lg:px-8 py-10">
-                <div className="lg:grid lg:grid-cols-12">
+                <div className="lg:grid lg:grid-cols-10">
                     <div
                         className="relative z-10 lg:col-start-1 lg:row-start-1 lg:col-span-4 lg:py-16 lg:bg-transparent">
                         <div className="absolute inset-x-0 h-1/2 bg-gray-50 lg:hidden" aria-hidden="true"/>
